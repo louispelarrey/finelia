@@ -16,9 +16,7 @@ class NoteController extends AbstractController
         $this->calculService = $calculService;
     }
 
-    /**
-     * @Route("/note", name="note")
-     */
+    #[Route('/note', name: 'note')]
     public function index(): Response
     {
         $marks = [

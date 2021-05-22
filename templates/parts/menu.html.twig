@@ -1,0 +1,72 @@
+<script src="https://kit.fontawesome.com/98cf9202be.js" crossorigin="anonymous"></script>
+<!-- START HEADER -->
+<div class="header">
+	<div class="container">
+		<div class="header-inner justify-content-start header-lg-height title-bar">
+			<div
+				class="brand inline" style="position: absolute; right:5px; top:30%">
+				<!-- START User Info-->
+				<div class="pull-left p-r-10 fs-14 font-heading d-lg-inline-block d-none " style="text-transform: capitalize">
+					<span>{{ user.firstName }}</span>
+					<span>{{ user.lastName }}</span>
+				</div>
+				<div class="dropdown pull-right d-lg-block">
+					<button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="profile dropdown">
+						<span class="thumbnail-wrapper d32 circular inline">
+							<img src="{{asset('assets/img/profiles/avatar.png')}}" alt="" data-src="{{asset('assets/img/profiles/avatar.png')}}" width="32" height="32">
+						</span>
+					</button>
+					<div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
+						<a href="#" class="dropdown-item">
+							<span style="text-transform: capitalize">Bienvenue
+								<br/><b>{{ user.firstName }} {{ user.lastName }}</b>
+							</span>
+						</a>
+						<div class="dropdown-divider"></div>
+						<a href="settings" class="dropdown-item">Votre Profil</a>
+						<a href="help" class="dropdown-item">Aide</a>
+						<div class="dropdown-divider"></div>
+						<a href="{{ path('logout') }}" class="dropdown-item">Déconnexion</a>
+						<div class="dropdown-divider"></div>
+						<span class="dropdown-item fs-12 hint-text">Dernière connexion le
+							<br/>{{ user.lastConnect|date('d-m-Y\\ à H:i') }}</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="brand inline align-self-end">
+				<img src="{{asset('assets/img/assas-logo.png')}}" class="d-none d-lg-block d-lg-none rounded" alt="logo" width="20" height="20" style="background-color: white;">
+					<a href="" class="btn-link toggle-sidebar d-lg-none header-icon sm-p-l-0 btn-icon-link" data-toggle="horizontal-menu">
+						<i class="pg-icon">menu</i>
+					</a>
+			</div>
+			<h2 class="page-title align-self-end">
+				Assas Lab Agenda
+			</h2>
+		</div>
+		<div class="menu-bar header-sm-height" data-pages-init='horizontal-menu' data-hide-extra-li="4">
+			<a href="#" class="btn-link header-icon toggle-sidebar d-lg-none" data-toggle="horizontal-menu">
+				<i class="pg-icon">close</i>
+			</a>
+			<ul>
+				<li>
+					<a href="event">Événement</a>
+				</li>
+				{% if not is_granted("ROLE_INVITED") %}
+				<li>
+					<a href="presence">
+						<span class="title">Présence</span>
+					</a>
+				</li>
+				{% endif %}
+				{% if is_granted("ROLE_ADMIN") %}
+				<li>
+					<a href="admin">
+						<span class="title">Panneau d'administration</span>
+					</a>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</div>
