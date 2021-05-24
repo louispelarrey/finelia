@@ -22,10 +22,13 @@ class Note
      */
     private $note;
 
+
     /**
-     * @ORM\Column(type="float")
+     * @ORM\ManyToOne(targetEntity=Matiere::class, inversedBy="notes")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $coef;
+    private $matiere;
+
 
     public function getId(): ?int
     {
@@ -44,14 +47,14 @@ class Note
         return $this;
     }
 
-    public function getCoef(): ?float
+    public function getMatiere(): ?Matiere
     {
-        return $this->coef;
+        return $this->matiere;
     }
 
-    public function setCoef(float $coef): self
+    public function setMatiere(?Matiere $matiere): self
     {
-        $this->coef = $coef;
+        $this->matiere = $matiere;
 
         return $this;
     }
