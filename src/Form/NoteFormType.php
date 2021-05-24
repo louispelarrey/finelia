@@ -14,16 +14,16 @@ class NoteFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('note', NumberType::class, array(
+        $builder->add('note', NumberType::class, [
                     'scale' => 1,
                     'attr' => array(
                         'min' => 0,
-                        'max' => 10,
+                        'max' => 20,
                         'step' => '.1',
                     ),
                     'required' => false,
                     'html5' => true
-                ))
+                ])
                 ->add('matiere', EntityType::class, [
                     'class' => Matiere::class,
                 ]);
