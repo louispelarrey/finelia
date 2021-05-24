@@ -38,7 +38,7 @@ class Note
         return $this->note;
     }
 
-    public function setNote(int $note): self
+    public function setNote(float $note): self
     {
         $this->note = $note;
 
