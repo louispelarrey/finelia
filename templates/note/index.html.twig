@@ -53,14 +53,14 @@
                                     <br>
                                     {{ form_start(noteForm, {'attr': {'class': 'form-horizontal', 'id': 'form-work'}}) }}
                                     <div class="form-group row">
-                                        <label class="col-md-5 control-label">Français</label>
+                                        <label class="col-md-5 control-label">Note</label>
                                         <div class="col-md-7">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    {{ form_widget(noteForm.note, {'attr': {'class': 'form-control', 'placeholder': 'Note'}})}}
+                                                    {{ form_widget(noteForm.matiere, {'attr': {'class': 'form-control', 'data-init-plugin': "cs-select"}})}}
                                                 </div>
                                                 <div class="col-md-6">
-                                                    {{ form_widget(noteForm.coef, {'attr': {'class': 'form-control', 'placeholder': 'Coefficient'}})}}
+                                                    {{ form_widget(noteForm.note, {'attr': {'class': 'form-control', 'placeholder': 'Note'}})}}
                                                 </div>
                                             </div>
                                         </div>
@@ -80,6 +80,34 @@
                                     {{ form_end(noteForm) }}
                                 </div>
                                 <br><br>
+                                <div class="col-md-12 right">
+                                    <h3 class="mw-80">Ajouter des matières
+                                    </h3>
+                                    <p class="mw-80">Ajoutez les matières pour pouvoir insérer des notes
+                                    </p>
+                                    <br>
+                                    {{ form_start(matiereForm, {'attr': {'class': 'form-horizontal', 'id': 'form-work'}}) }}
+                                    <div class="form-group row">
+                                        <label class="col-md-5 control-label">Matière</label>
+                                        <div class="col-md-7">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    {{ form_widget(matiereForm.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}})}}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {{ form_widget(matiereForm.coef, {'attr': {'class': 'form-control', 'placeholder': 'Coefficient'}})}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col">
+                                            <button aria-label="" class="btn btn-success pull-right" type="submit">Sauvegarder</button>
+                                        </div>
+                                    </div>
+                                    {{ form_end(matiereForm) }}
+                                </div>
                             </div>
                         </div>
                         <!-- END card -->

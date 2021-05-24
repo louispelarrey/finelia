@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Matiere;
 use App\Entity\Note;
+use App\Form\MatiereFormType;
 use App\Form\NoteFormType;
 use App\Service\Calculate;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,12 +23,13 @@ class NoteController extends AbstractController
     #[Route('/note', name: 'note')]
     public function index(): Response
     {
-        $note = new Note();
-        $form = $this->createForm(NoteFormType::class, $note);
+        $noteForm = $this->createForm(NoteFormType::class, new Note());
+        $matiereForm = $this->createForm(MatiereFormType::class, new Matiere());
 
         return $this->render('note/index.html.twig', [
             'user' => $this->getUser(),
-            'noteForm' => $form->createView(),
+            'noteForm' => $noteForm->createView(),
+            'matiereForm' => $matiereForm->createView(),
         ]);
     }
 
