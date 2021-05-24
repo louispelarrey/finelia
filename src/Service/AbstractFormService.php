@@ -2,8 +2,6 @@
 
 namespace App\Service;
 
-use App\Entity\Matiere as MatiereEntity;
-use App\Form\MatiereFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
