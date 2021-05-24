@@ -44,7 +44,7 @@ class Matiere
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getNom(): string
     {
         return $this->nom;
     }
@@ -93,5 +93,10 @@ class Matiere
         $this->coef = $coef;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
     }
 }

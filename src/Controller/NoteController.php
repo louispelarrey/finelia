@@ -2,29 +2,32 @@
 
 namespace App\Controller;
 
-use App\Entity\Matiere;
-use App\Entity\Note;
-use App\Form\MatiereFormType;
-use App\Form\NoteFormType;
 use App\Service\Calculate;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\Matiere as MatiereService;
+use App\Service\Note as NoteService;
 
 class NoteController extends AbstractController
 {
     private Calculate $calculService;
+    private MatiereService $matiereService;
+    private NoteService $noteService;
 
-    public function __construct(Calculate $calculService)
+    public function __construct(Calculate $calculService, MatiereService $matiereService, NoteService $noteService)
     {
         $this->calculService = $calculService;
+        $this->matiereService = $matiereService;
+        $this->noteService = $noteService;
     }
 
     #[Route('/note', name: 'note')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        $noteForm = $this->createForm(NoteFormType::class, new Note());
-        $matiereForm = $this->createForm(MatiereFormType::class, new Matiere());
+        $matiereForm = $this->matiereService->formManager($request);
+        $noteForm = $this->noteService->formManager($request);
 
         return $this->render('note/index.html.twig', [
             'user' => $this->getUser(),

@@ -22,13 +22,11 @@ class Note
      */
     private $note;
 
-
     /**
      * @ORM\ManyToOne(targetEntity=Matiere::class, inversedBy="notes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $matiere;
-
 
     public function getId(): ?int
     {
