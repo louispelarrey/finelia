@@ -20,7 +20,9 @@ class Note extends AbstractFormService{
         if ($form->isSubmitted() && $form->isValid()) {
             $note
                 ->setMatiere($form->get('matiere')->getData())
-                ->setNote($form->get('note')->getData());
+                ->setNote($form->get('note')->getData())
+                ->setUser($form->get('user')->getData())
+            ;
 
             $this->em->persist($note);
             $this->em->flush();

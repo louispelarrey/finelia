@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Matiere;
 use App\Entity\Note;
+use App\Entity\User;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -26,7 +28,17 @@ class NoteFormType extends AbstractType
                 ])
                 ->add('matiere', EntityType::class, [
                     'class' => Matiere::class,
-                ]);
+                ])
+                ->add('user', EntityType::class, [
+                    'class' => User::class,
+                    'query_builder' => function (EntityRepository $er) {
+                        return $er->createQueryBuilder('u')
+                            ->where('u.roles = :etudiant')
+                            ->setParameter(':etudiant', '["ROLE_ETUDIANT"]')
+                            ;
+                    },
+                ])
+        ;
 
     }
 
