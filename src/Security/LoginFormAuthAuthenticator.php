@@ -95,7 +95,7 @@ class LoginFormAuthAuthenticator extends AbstractFormLoginAuthenticator implemen
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('note'));
+        return new RedirectResponse($this->urlGenerator->generate('noteList'));
     }
 
     protected function getLoginUrl(): string
