@@ -31,7 +31,7 @@ class NoteController extends AbstractController
     #[Route('/list', name: 'List', methods: ['GET', 'POST'])]
     public function index(Request $request): Response
     {
-        $table = $this->datatable->noteDatatable($request);
+        $table = $this->datatable->noteDatatable($request, $this->getUser());
         if ($table->isCallback()) {
             return $table->getResponse();
         }
