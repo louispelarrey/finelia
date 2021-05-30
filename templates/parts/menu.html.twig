@@ -1,0 +1,35 @@
+<script src="https://kit.fontawesome.com/98cf9202be.js" crossorigin="anonymous"></script>
+<!-- START HEADER -->
+<div class="header">
+	<div class="container">
+		<div class="header-inner justify-content-start header-lg-height title-bar">
+			<div
+				class="brand inline" style="position: absolute; right:5px; top:30%">
+				<!-- START User Info-->
+				<div class="pull-left p-r-10 fs-14 font-heading d-lg-inline-block d-none " style="text-transform: capitalize">
+					<span>{{ user.firstName }}</span>
+					<span>{{ user.lastName }}</span>
+				</div>
+			</div>
+
+			<h2 class="page-title align-self-end">
+				Gestionnaire de notes
+			</h2>
+		</div>
+		<div class="menu-bar header-sm-height" data-pages-init='horizontal-menu' data-hide-extra-li="4">
+			<a href="#" class="btn-link header-icon toggle-sidebar d-lg-none" data-toggle="horizontal-menu">
+				<i class="pg-icon">close</i>
+			</a>
+			<ul>
+				<li>
+					<a href="/note/add">Insérer mes notes</a>
+				</li>
+				<li>
+					<a href="/note/list">
+						<span class="title">Voir mes notes</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
